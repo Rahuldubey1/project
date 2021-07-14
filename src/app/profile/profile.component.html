@@ -1,0 +1,9 @@
+
+<div class="container page">
+    <app-search (myOutput) ="GetData($event)"></app-search>
+    <div class="row">
+        <div *ngIf="userData">
+            <app-profilelist [myinputMsg]="userData" ></app-profilelist>
+        </div>
+    </div>
+</div>

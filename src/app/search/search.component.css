@@ -1,0 +1,19 @@
+.search{
+        height:40px;
+        font-size:14pt;
+        width:100%;
+        display: flex;
+        position: sticky;
+        top: 0px;
+}
+.search input{
+    flex: 1;  
+    box-sizing:border-box;
+    border-style:none;
+    margin: -10px -10px 13px -10px;    
+}
+input[type="text"], textarea {
+
+    background-color : #d1d1d1; 
+  
+}

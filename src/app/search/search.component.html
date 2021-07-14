@@ -1,0 +1,6 @@
+<div class="search" [formGroup]="search">
+    <input type="text" placeholder="  Search by name" formControlName="search" #myInput (input)="OnInput($event.target)">
+</div>
+<div class="search" [formGroup]="search">
+    <input type="text" placeholder="  Search by Tag" formControlName="tag" #mytag (input)="OnInput($event.target)">
+</div>

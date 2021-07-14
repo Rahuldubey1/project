@@ -1,0 +1,14 @@
+.container {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    margin-top:4%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 1px 2px white;
+    height: 450px;
+    overflow-y: scroll;     
+}
+.container::-webkit-scrollbar {
+    display: none;
+}

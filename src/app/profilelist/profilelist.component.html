@@ -1,0 +1,42 @@
+<div *ngFor="let data of myinputMsg; let i = index">
+    <div class="col-md-3 first">
+        <img src="{{data.pic}}" class="img-fluid">
+    </div>
+    <div class="col-md-9 second">
+        <div>
+            <h3>{{data.firstName}} {{data.lastName}}</h3>
+        </div>
+        <div class="design"> 
+            <div>
+                <span>Email: {{data.email}}</span>
+            </div>
+            <div>
+                <span>Company: {{data.company}}</span>
+            </div>
+            <div *ngIf="selectedIndex != i">
+                <img src="./assets/download.png" (click)="tags(i)">
+            </div>
+            <div *ngIf="selectedIndex == i">
+                <img src="./assets/1766899.png" (click)="tags(i)">
+            </div>
+            <div>
+                <span>Skill: {{data.skill}}</span>
+            </div>
+            <div>
+                <span>Average: 50%</span>
+            </div>
+            <div *ngIf="selectedIndex == i">   
+                <div *ngFor="let item of data.grades; let i = index">
+                    <p> test {{i+1}} : {{item}}</p>
+                </div>
+            </div>
+            <div *ngIf="item == i">
+                <p *ngFor="let tag of newValue" class="title">{{tag}}</p>
+            </div>
+            <div class="search" [formGroup]="search">
+                <input type="text" placeholder="Enter Tags." formControlName="search" #myInput (keydown.enter)="OnInput(myInput.value,i)">
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
