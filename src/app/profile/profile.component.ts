@@ -10,6 +10,7 @@ export class ProfileComponent implements OnInit {
   userData:any
   value:any =[]
   data:any = []
+  tagsList:any
   constructor(private _service:ServicesService) { }
   GetData(data:any){
     console.log(data)
@@ -24,6 +25,24 @@ export class ProfileComponent implements OnInit {
   } else {
     this.userInfo()
   }
+  }
+  GetTag(data:any){
+    debugger
+    if(data != '') {
+      this.data = []
+    for (let i = 0; i < this.userData.length; i++) {
+      console.log(this.userData[i].tags)
+      if ((this.userData[i].tags).includes(data)) {
+        alert("1y")
+        this.data.push(this.userData[i]);
+      }
+    }
+      this.userData=this.data
+  }
+  }
+  filterTag(data:any){
+    this.userData = data
+  console.log(this.userData)
   }
   ngOnInit(): void {
     this.userInfo()

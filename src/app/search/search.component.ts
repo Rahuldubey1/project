@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class SearchComponent implements OnInit {
   search:any
   @Output() myOutput:EventEmitter<any>= new EventEmitter();
+  @Output() myTag:EventEmitter<any>= new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -21,8 +22,10 @@ export class SearchComponent implements OnInit {
   console.log(this.search.value)
   }
   OnInput(value:any) {
-    // console.log(value.value)
     this.myOutput.emit(value.value)
+  }
+  searchTag(value:any){
+    this.myTag.emit(value.value)
   }
 
 }

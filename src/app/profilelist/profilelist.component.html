@@ -2,7 +2,7 @@
     <div class="col-md-3 first">
         <img src="{{data.pic}}" class="img-fluid">
     </div>
-    <div class="col-md-9 second">
+    <div class="col-md-7 second">
         <div>
             <h3>{{data.firstName}} {{data.lastName}}</h3>
         </div>
@@ -12,12 +12,6 @@
             </div>
             <div>
                 <span>Company: {{data.company}}</span>
-            </div>
-            <div *ngIf="selectedIndex != i">
-                <img src="./assets/download.png" (click)="tags(i)">
-            </div>
-            <div *ngIf="selectedIndex == i">
-                <img src="./assets/1766899.png" (click)="tags(i)">
             </div>
             <div>
                 <span>Skill: {{data.skill}}</span>
@@ -30,12 +24,26 @@
                     <p> test {{i+1}} : {{item}}</p>
                 </div>
             </div>
-            <div *ngIf="item == i">
-                <p *ngFor="let tag of newValue" class="title">{{tag}}</p>
+            <div *ngIf="data.tags">
+                <p  *ngFor="let value of data.tags" class="title">{{value}}</p>
             </div>
             <div class="search" [formGroup]="search">
                 <input type="text" placeholder="Enter Tags." formControlName="search" #myInput (keydown.enter)="OnInput(myInput.value,i)">
             </div>
+            <div *ngIf="errorMsg && index == i" class="error">
+                <p>This tag is already present in Tags list</p>
+            </div>
+            <div *ngIf="errorInput && index == i" class="error" >
+                <p>Tags can't be blank</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 third" >
+        <div *ngIf="selectedIndex != i">
+            <img src="./assets/download.png" (click)="tags(i)">
+        </div>
+        <div *ngIf="selectedIndex == i">
+            <img src="./assets/1766899.png" (click)="tags(i)">
         </div>
     </div>
     <hr>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter,Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -8,10 +8,17 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ProfilelistComponent implements OnInit {
   @Input() myinputMsg:any;
+  @Output() filterTag:EventEmitter<any>= new EventEmitter();
+  
   selectedIndex:any
   search:any
-  item:any
+  item1:any
   newValue: any = []; 
+  arr:any = []
+  storedIndex:any = undefined
+  errorMsg:boolean = false
+  errorInput:boolean = false
+  index:any
   constructor() { }
 
   ngOnInit(): void {
@@ -29,9 +36,34 @@ export class ProfilelistComponent implements OnInit {
     
   }
   OnInput(value:any,i:any) {
-    this.item=i
-    this.newValue.push(value)
-    this.search.patchValue( {'search':null} );
+    this.index = i
+    if(value == ""){
+      this.errorInput = true
+    } else {
+      this.errorInput = false
+      if(this.storedIndex != i){
+        if(this.myinputMsg[i].tags == undefined){
+        this.arr = []
+        } else{
+          this.arr = this.myinputMsg[i].tags
+        }
+      }
+      this.storedIndex = i 
+      this.item1 = this.myinputMsg[i]
+      console.log(this.arr)
+      if((this.arr).includes(value)){
+        this.errorMsg = true
+      } else{
+        this.errorMsg = false
+        this.arr.push(value)
+      }
+      this.item1.tags = this.arr
+      console.log(this.myinputMsg)
+      console.log(this.item1.tags)
+      this.search.patchValue( {'search':null} );
+      this.filterTag.emit(this.myinputMsg)
+    }
+    
   }
 
 }

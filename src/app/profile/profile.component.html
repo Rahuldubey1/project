@@ -1,9 +1,9 @@
 
 <div class="container page">
-    <app-search (myOutput) ="GetData($event)"></app-search>
+    <app-search (myOutput) ="GetData($event)" (myTag) ="GetTag($event)"></app-search>
     <div class="row">
         <div *ngIf="userData">
-            <app-profilelist [myinputMsg]="userData" ></app-profilelist>
+            <app-profilelist [myinputMsg]="userData" (filterTag) ="filterTag($event)"></app-profilelist>
         </div>
     </div>
 </div>

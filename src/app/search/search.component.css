@@ -3,17 +3,14 @@
         font-size:14pt;
         width:100%;
         display: flex;
-        position: sticky;
         top: 0px;
+        margin-bottom: 5px;
 }
 .search input{
     flex: 1;  
     box-sizing:border-box;
-    border-style:none;
-    margin: -10px -10px 13px -10px;    
+    border-style:none;   
 }
 input[type="text"], textarea {
-
     background-color : #d1d1d1; 
-  
 }
