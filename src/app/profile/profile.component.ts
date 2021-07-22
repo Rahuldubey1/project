@@ -24,7 +24,11 @@ export class ProfileComponent implements OnInit {
     }
       this.userData=this.data
   } else {
-    this.userInfo()
+    if(this.backup){
+      this.userData = this.backup
+    } else {
+      this.userInfo()
+    }
   }
   }
   GetTag(data:any){
