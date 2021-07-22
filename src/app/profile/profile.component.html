@@ -2,7 +2,7 @@
 <div class="container page">
     <app-search (myOutput) ="GetData($event)" (myTag) ="GetTag($event)"></app-search>
     <div class="row">
-        <div *ngIf="userData">
+        <div *ngIf="userData && !nodata">
             <app-profilelist  [myinputMsg]="userData" (filterTag) ="filterTag($event)"></app-profilelist>
             
         </div>

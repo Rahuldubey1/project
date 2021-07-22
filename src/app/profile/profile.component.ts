@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
   nodata:boolean = false
   constructor(private _service:ServicesService) { }
   GetData(data:any){
-    console.log(data)
     if(data != '') {
       this.data = []
     for (let i = 0; i < this.userData.length; i++) {
@@ -41,6 +40,11 @@ export class ProfileComponent implements OnInit {
   GetTag(data:any){
     if(data != '') {
       this.data = []
+      if(this.backup){
+        this.userData = this.backup
+      } else {
+        this.userInfo()
+      }
       for (let i = 0; i < this.userData.length; i++) {
         if(this.userData[i].tags == undefined){
         } else {
@@ -54,7 +58,8 @@ export class ProfileComponent implements OnInit {
           if(this.data){
             for(let i=0; i < this.data.length; i++){
               if(this.data[i]?.email == this.data[i+1]?.email){
-                console.log(this.data)
+                console.log(this.data[i]?.email)
+                console.log(this.data[i+1]?.email)
                 this.data.splice(i+1,1)
                 console.log(this.data)
 
