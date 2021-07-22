@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
   value:any =[]
   data:any = []
   tagsList:any
+  backup:any
   constructor(private _service:ServicesService) { }
   GetData(data:any){
     console.log(data)
@@ -27,22 +28,28 @@ export class ProfileComponent implements OnInit {
   }
   }
   GetTag(data:any){
-    debugger
+    console.log(data)
     if(data != '') {
       this.data = []
     for (let i = 0; i < this.userData.length; i++) {
-      console.log(this.userData[i].tags)
-      if ((this.userData[i].tags).includes(data)) {
-        alert("1y")
-        this.data.push(this.userData[i]);
+      if(this.userData[i].tags == undefined){
+      } else {
+        for(let p = 0; p < this.userData[i].tags.length; p++)
+        if ((this.userData[i].tags[p]).includes(data)) {
+          console.log(this.userData[i].tags[p])
+          this.data.push(this.userData[i]);
+          console.log(this.data)
+        }
       }
     }
       this.userData=this.data
+  } else {
+    this.userData = this.backup
   }
   }
   filterTag(data:any){
     this.userData = data
-  console.log(this.userData)
+    this.backup = data
   }
   ngOnInit(): void {
     this.userInfo()
