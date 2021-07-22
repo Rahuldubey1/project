@@ -37,8 +37,9 @@ export class ProfilelistComponent implements OnInit {
   }
   OnInput(value:any,i:any) {
     this.index = i
-    if(value == ""){
+    if(value.trim().length == 0){
       this.errorInput = true
+      this.errorMsg = false
     } else {
       this.errorInput = false
       if(this.storedIndex != i){

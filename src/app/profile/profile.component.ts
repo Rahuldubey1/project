@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   data:any = []
   tagsList:any
   backup:any
+  nodata:boolean = false
   constructor(private _service:ServicesService) { }
   GetData(data:any){
     console.log(data)
@@ -30,29 +31,51 @@ export class ProfileComponent implements OnInit {
       this.userInfo()
     }
   }
+  if(this.userData.length == 0){
+    this.nodata = true
+  } 
+  if(data == ''){
+    this.nodata = false
+  }
   }
   GetTag(data:any){
-    console.log(data)
     if(data != '') {
       this.data = []
-    for (let i = 0; i < this.userData.length; i++) {
-      if(this.userData[i].tags == undefined){
-      } else {
-        for(let p = 0; p < this.userData[i].tags.length; p++)
-        if ((this.userData[i].tags[p]).includes(data)) {
-          console.log(this.userData[i].tags[p])
-          this.data.push(this.userData[i]);
-          console.log(this.data)
+      for (let i = 0; i < this.userData.length; i++) {
+        if(this.userData[i].tags == undefined){
+        } else {
+          for(let p = 0; p < this.userData[i].tags.length; p++){
+            if ((this.userData[i].tags[p]).includes(data)) {
+              console.log(this.userData[i].tags[p])
+              this.data.push(this.userData[i]);
+              console.log(this.data)
+            }
+          }
+          if(this.data){
+            for(let i=0; i < this.data.length; i++){
+              if(this.data[i]?.email == this.data[i+1]?.email){
+                console.log(this.data)
+                this.data.splice(i+1,1)
+                console.log(this.data)
+
+              }
+            }
+          }
         }
       }
-    }
       this.userData=this.data
-  } else {
+    } else {
     if(this.backup){
       this.userData = this.backup
     } else {
       this.userInfo()
     }
+  }
+  if(this.userData.length == 0){
+    this.nodata = true
+  } 
+  if(data == ''){
+    this.nodata = false
   }
   }
   filterTag(data:any){

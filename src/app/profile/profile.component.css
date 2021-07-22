@@ -11,3 +11,7 @@
 .container::-webkit-scrollbar {
     display: none;
 }
+.error{
+    color: red;
+    text-align: center;
+}

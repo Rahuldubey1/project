@@ -3,7 +3,11 @@
     <app-search (myOutput) ="GetData($event)" (myTag) ="GetTag($event)"></app-search>
     <div class="row">
         <div *ngIf="userData">
-            <app-profilelist [myinputMsg]="userData" (filterTag) ="filterTag($event)"></app-profilelist>
+            <app-profilelist  [myinputMsg]="userData" (filterTag) ="filterTag($event)"></app-profilelist>
+            
+        </div>
+        <div class="error">
+            <p *ngIf="nodata">No data found</p>
         </div>
     </div>
 </div>
