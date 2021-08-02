@@ -7,7 +7,7 @@
             
         </div>
         <div class="error">
-            <p *ngIf="nodata">No data found</p>
+            <p *ngIf="userData && userData.length == 0">No data found</p>
         </div>
     </div>
 </div>
