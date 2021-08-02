@@ -45,9 +45,10 @@
     top: 0px;
 }
 .search input{
-flex: 1;  
-box-sizing:border-box;
-border-style:none;
+    flex: 1;  
+    box-sizing:border-box;
+    border-style:none;
+    margin-top: 5px;
 }
 .title {
     clear: both;
@@ -68,9 +69,19 @@ border-style:none;
     object-fit: cover;
 }
 .third{
-    /* display: inline-block; */
     float: right;
 }
 .error{
     color: red;
+}
+.design .rahul{
+word-break: break-all;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.title{
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

@@ -36,6 +36,8 @@ export class ProfilelistComponent implements OnInit {
     
   }
   OnInput(value:any,i:any) {
+    console.log(value)
+    console.log(i)
     this.index = i
     if(value.trim().length == 0){
       this.errorInput = true
@@ -47,20 +49,19 @@ export class ProfilelistComponent implements OnInit {
         this.arr = []
         } else{
           this.arr = this.myinputMsg[i].tags
+          console.log(this.arr)
         }
       }
       this.storedIndex = i 
       this.item1 = this.myinputMsg[i]
-      console.log(this.arr)
-      if((this.arr).includes(value)){
+      if((this.arr).includes(value.trim())){
         this.errorMsg = true
       } else{
         this.errorMsg = false
-        this.arr.push(value)
+        this.arr.push(value.trim())
+        console.log(this.arr)
       }
       this.item1.tags = this.arr
-      console.log(this.myinputMsg)
-      console.log(this.item1.tags)
       this.search.patchValue( {'search':null} );
       this.filterTag.emit(this.myinputMsg)
     }
