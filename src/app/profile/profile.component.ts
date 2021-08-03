@@ -30,49 +30,42 @@ export class ProfileComponent implements OnInit {
     // }
     //   this.userData=this.data
     this.imp=this.filterData(data,1)
-      console.log(this.imp)
-      console.log(this.userData)
     } else {
       if(this.imp1 != undefined){
         this.userData = this.imp1
       } else{
-        this.userInfo()
-        this.imp = undefined
+        if(this.backup){
+          this.userData = this.backup
+        } else {
+          this.userInfo()
+          this.imp1 = undefined
+        }
       }
     }
   }
 
   GetTag(data:any){
     if(data) {
-      // for (let i = 0; i < this.userData.length; i++) {
-      //   if(this.userData[i].tags == undefined){
-      //   } else {
-      //     for(let p = 0; p < this.userData[i].tags.length; p++){
-      //       if ((this.userData[i].tags[p]).includes(data)) {
-      //         this.data.push(this.userData[i]);
-      //       }
-      //     }
-      //     if(this.data){
-      //       for(let i=0; i < this.data.length; i++){
-      //         if(this.data[i]?.email == this.data[i+1]?.email){
-      //           this.data.splice(i+1,1)
-      //         }
-      //       }
-      //     }
-      //   }
-      // }
-      // this.userData=this.data
       this.imp1=this.filterData(data,2)
-      console.log(this.imp1)
-      console.log(this.userData)
     } else {
-      
-      if(this.imp != undefined){
+      alert("1")
+      console.log(this.imp)
+      if(this.imp != undefined && this.imp != ''){
+      alert("2")
+        
         this.userData = this.imp
       } else{
-        this.userInfo()
-        this.imp1 = undefined
-
+        
+        if(this.backup){
+      alert("3")
+        
+          this.userData = this.backup
+        } else {
+      alert("4")
+        
+          this.userInfo()
+          this.imp1 = undefined
+        }
       }
     }
   }

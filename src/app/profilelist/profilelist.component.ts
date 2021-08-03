@@ -64,6 +64,7 @@ export class ProfilelistComponent implements OnInit {
       this.item1.tags = this.arr
       this.search.patchValue( {'search':null} );
       this.filterTag.emit(this.myinputMsg)
+      console.log(this.myinputMsg)
     }
     
   }
